@@ -19,12 +19,15 @@ export class Video extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save Video entity without an ID");
+    if (id == null) {
+      throw new Error("Cannot save Video entity without an ID");
+    }
     if (id) {
-      assert(
-        id.kind == ValueKind.STRING,
-        `Entities of type Video must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
-      );
+      if (id.kind !== ValueKind.STRING) {
+        throw new Error(
+          `Entities of type Video must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        );
+      }
       store.set("Video", id.toString(), this);
     }
   }
