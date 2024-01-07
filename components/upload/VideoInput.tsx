@@ -13,7 +13,10 @@ export default function UploadInput(props) {
   return (
     <div
       onClick={() => {
-        videoRef.current.click();
+        if (videoRef.current) {
+          const castedVideoRef = videoRef as React.MutableRefObject<HTMLVideoElement>;
+          castedVideoRef.current.click();
+        }
       }}
       className={
         video
