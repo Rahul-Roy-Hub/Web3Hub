@@ -13,7 +13,7 @@ export function createVideoUploadedEvent(
   date: string,
   author: Address
 ): VideoUploaded {
-  let videoUploadedEvent = changetype<VideoUploaded>(newMockEvent())
+  let videoUploadedEvent = newMockEvent() as VideoUploaded;
 
   videoUploadedEvent.parameters = new Array()
 
