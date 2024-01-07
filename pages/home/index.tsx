@@ -10,33 +10,36 @@ export default function Home() {
   const [query, setQuery] = useState<String>("");
   const [category, setCategory] = useState<String>("");
 
-  const fetchVideos = async () => {
-    setLoading(true);
-    ApolloClient.query({
-      query: GET_ALL_VIDEOS,
-      variables: {
-        first: 200,
-        skip: 0,
-        orderBy: "createdAt",
-        orderDirection: "desc",
-        where: {
-          ...(query && {
-            title_contains_nocase: query,
-          }),
-          ...(category && {
-            category_contains_nocase: category,
-          }),
-        },
-      },
-      fetchPolicy: "network-only",
-    }).then(({ data }) => {
-      console.log("Videos", data.videos);
-      setVideos(data.videos);
-      setLoading(false);
-    });
-  };
-
   useEffect(() => {
+    const fetchVideos = async () => {
+      setLoading(true);
+      try {
+        const { data } = await ApolloClient.query({
+          query: GET_ALL_VIDEOS,
+          variables: {
+            first: 200,
+            skip: 0,
+            orderBy: "createdAt",
+            orderDirection: "desc",
+            where: {
+              ...(query && {
+                title_contains_nocase: query,
+              }),
+              ...(category && {
+                category_contains_nocase: category,
+              }),
+            },
+          },
+          fetchPolicy: "network-only",
+        });
+        setVideos(data.videos);
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchVideos();
   }, [query, category]);
 
@@ -49,17 +52,15 @@ export default function Home() {
           <div className="flex flex-row flex-wrap">
             {loading ? (
               <>
-                {Array(10)
-                  .fill(0)
-                  .map((_, index) => (
-                    <div className="w-80">
-                      <Loader />
-                    </div>
-                  ))}
+                {Array(10).fill(0).map((_, index) => (
+                  <div key={index} className="w-80">
+                    <Loader />
+                  </div>
+                ))}
               </>
             ) : (
               videos?.map((video: any) => (
-                <Video video={video} horizontal={false} />
+                <Video key={video.id} video={video} horizontal={false} />
               ))
             )}
           </div>

@@ -29,9 +29,9 @@ export default function Video() {
       fetchPolicy: 'network-only',
     })
       .then(({ data }) => {
-        setRelatedVideos(data.videos.filter((v) => v.id !== id))
-        const video = data?.videos?.find((video) => video.id === id)
-        setVideo(video)
+        setRelatedVideos(data.videos.filter((v: IVideo) => v.id !== id));
+        const videoData = data?.videos?.find((v: IVideo) => v.id === id) as IVideo;
+        setVideo(videoData)
         console.log('videos', data.videos)
       })
       .catch((err) => {
@@ -43,9 +43,13 @@ export default function Video() {
     fetchVideos()
   }, [id])
 
+  const updateCategory = (category: any) => {
+    // Your logic for updating the category
+  };
+
   return (
     <Background className="flex  h-screen w-full flex-row">
-      <Sidebar />
+      <Sidebar updateCategory={updateCategory} />
       <div className="flex flex-1 flex-col">
         <Header />
         {video && (
@@ -59,7 +63,13 @@ export default function Video() {
                   </h3>
                   <p className="mt-1 text-gray-500 ">
                     {video.category} •{' '}
-                    {moment(new Date(video.createdAt * 1000)).fromNow()}
+                    {
+                      moment(
+                        new Date(
+                          typeof video.createdAt === 'number' ? video.createdAt * 1000 : 0
+                        )
+                      ).fromNow()
+                    }
                   </p>
                 </div>
               </div>

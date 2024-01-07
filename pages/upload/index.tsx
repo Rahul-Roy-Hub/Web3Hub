@@ -6,13 +6,23 @@ import { UploadInput, Background } from '../../components'
 import { saveToIPFS, getContract } from '../../utils'
 import toast from 'react-hot-toast'
 
+interface UploadData {
+  video?: string;
+  title?: string;
+  description?: string;
+  location?: string;
+  category?: string;
+  thumbnail?: string;
+  UploadedDate?: number;
+}
+
 export default function Upload() {
   const [title, setTitle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [category, setCategory] = useState<string>('')
   const [location, setLocation] = useState<string>('')
   const [thumbnail, setThumbnail] = useState<File>()
-  const [uploadData, setUploadData] = useState({})
+  const [uploadData, setUploadData] = useState<UploadData>({});
   const [video, setVideo] = useState<File>()
 
   const thumbnailRef = useRef<HTMLInputElement>(null)
@@ -62,7 +72,7 @@ export default function Upload() {
   }
 
   // Function to save the video to the Contract
-  const saveVideo = async (data = uploadData) => {
+  const saveVideo = async (data: UploadData = uploadData) => {
     // Get the contract from the getContract function
     let contract = await getContract()
     // Upload the video to the contract
@@ -79,13 +89,17 @@ export default function Upload() {
     )
   }
 
+  const handleUpdateCategory = (newCategory: string) => {
+    setCategory(newCategory);
+  };
+
   return (
     <Background>
       <p className="text-2xl font-bold text-white">
         {uploadProgress && uploadProgress * 100}
       </p>
       <div className="flex h-screen w-full flex-row">
-        <Sidebar />
+      <Sidebar updateCategory={handleUpdateCategory} />
         <div className="flex flex-1 flex-col">
           <Header />
           <div className="mt-5 mr-10 flex  justify-end">
