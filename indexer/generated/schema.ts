@@ -8,7 +8,7 @@ import {
   store,
   Bytes,
   BigInt,
-  BigDecimal
+  BigDecimal,
 } from "@graphprotocol/graph-ts";
 
 export class Video extends Entity {
@@ -33,7 +33,7 @@ export class Video extends Entity {
   }
 
   static load(id: string): Video | null {
-    return changetype<Video | null>(store.get("Video", id));
+    return store.get("Video", id) as Video | null;
   }
 
   get id(): string {
