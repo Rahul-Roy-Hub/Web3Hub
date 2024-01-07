@@ -6,7 +6,6 @@ type Video @entity {
   location: String # string
   category: String # string
   thumbnailHash: String! # string
-  isAudio: Boolean! # boolean
   date: String # string
   author: Bytes! # address
   createdAt: BigInt! # timestamp

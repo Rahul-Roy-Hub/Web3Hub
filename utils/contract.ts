@@ -1,4 +1,4 @@
-import ContractAbi from "../artifacts/contracts/OurTube.sol/OurTube.json";
+import ContractAbi from "../artifacts/contracts/Web3Hub.sol/Web3Hub.json";
 import { ethers } from "ethers";
 import { CONTRACT_ADDRESS } from "../constants";
 

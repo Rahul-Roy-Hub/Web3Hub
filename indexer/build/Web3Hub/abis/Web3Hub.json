@@ -51,12 +51,6 @@
       },
       {
         "indexed": false,
-        "internalType": "bool",
-        "name": "isAudio",
-        "type": "bool"
-      },
-      {
-        "indexed": false,
         "internalType": "string",
         "name": "date",
         "type": "string"
@@ -115,11 +109,6 @@
         "internalType": "string",
         "name": "_thumbnailHash",
         "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "_isAudio",
-        "type": "bool"
       },
       {
         "internalType": "string",
@@ -189,11 +178,6 @@
         "internalType": "string",
         "name": "thumbnailHash",
         "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "isAudio",
-        "type": "bool"
       },
       {
         "internalType": "string",

@@ -15,7 +15,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Ourtube",
+  appName: "Web3Hub",
   chains,
 });
 

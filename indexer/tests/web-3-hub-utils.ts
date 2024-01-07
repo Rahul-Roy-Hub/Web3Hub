@@ -1,6 +1,6 @@
 import { newMockEvent } from "matchstick-as"
 import { ethereum, BigInt, Address } from "@graphprotocol/graph-ts"
-import { VideoUploaded } from "../generated/Ourtube/Ourtube"
+import { VideoUploaded } from "../generated/Web3Hub/Web3Hub"
 
 export function createVideoUploadedEvent(
   id: BigInt,
@@ -10,7 +10,6 @@ export function createVideoUploadedEvent(
   location: string,
   category: string,
   thumbnailHash: string,
-  isAudio: boolean,
   date: string,
   author: Address
 ): VideoUploaded {
@@ -44,9 +43,6 @@ export function createVideoUploadedEvent(
       "thumbnailHash",
       ethereum.Value.fromString(thumbnailHash)
     )
-  )
-  videoUploadedEvent.parameters.push(
-    new ethereum.EventParam("isAudio", ethereum.Value.fromBoolean(isAudio))
   )
   videoUploadedEvent.parameters.push(
     new ethereum.EventParam("date", ethereum.Value.fromString(date))

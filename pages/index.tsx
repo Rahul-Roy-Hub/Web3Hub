@@ -24,7 +24,7 @@ function Landing() {
                 className="text-5xl text-text-light md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 dark:text-text-dark"
                 data-aos="zoom-y-out"
               >
-                It is YouTube, but{" "}
+                It is Web3Hub, but{" "}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
                   Decentralized
                 </span>

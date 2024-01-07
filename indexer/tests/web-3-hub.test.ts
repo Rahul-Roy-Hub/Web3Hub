@@ -8,9 +8,9 @@ import {
 } from "matchstick-as/assembly/index"
 import { BigInt, Address } from "@graphprotocol/graph-ts"
 import { ExampleEntity } from "../generated/schema"
-import { VideoUploaded } from "../generated/Ourtube/Ourtube"
-import { handleVideoUploaded } from "../src/ourtube"
-import { createVideoUploadedEvent } from "./ourtube-utils"
+import { VideoUploaded } from "../generated/Web3Hub/Web3Hub"
+import { handleVideoUploaded } from "../src/web-3-hub"
+import { createVideoUploadedEvent } from "./web-3-hub-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
@@ -24,7 +24,6 @@ describe("Describe entity assertions", () => {
     let location = "Example string value"
     let category = "Example string value"
     let thumbnailHash = "Example string value"
-    let isAudio = "boolean Not implemented"
     let date = "Example string value"
     let author = Address.fromString(
       "0x0000000000000000000000000000000000000001"
@@ -37,7 +36,6 @@ describe("Describe entity assertions", () => {
       location,
       category,
       thumbnailHash,
-      isAudio,
       date,
       author
     )
@@ -90,12 +88,6 @@ describe("Describe entity assertions", () => {
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a",
       "thumbnailHash",
       "Example string value"
-    )
-    assert.fieldEquals(
-      "ExampleEntity",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a",
-      "isAudio",
-      "boolean Not implemented"
     )
     assert.fieldEquals(
       "ExampleEntity",

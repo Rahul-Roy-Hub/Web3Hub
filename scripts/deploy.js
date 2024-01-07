@@ -1,8 +1,9 @@
 // We require the Hardhat Runtime Environment explicitly here. This is optional
 // but useful for running the script in a standalone fashion through `node <script>`.
 //
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
+// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
+// will compile your contracts, add the Hardhat Runtime Environment's members to the
+// global scope, and execute the script.
 const hre = require("hardhat");
 
 async function main() {
@@ -14,12 +15,12 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Ourtube = await hre.ethers.getContractFactory("Ourtube");
-  const ourtube = await Ourtube.deploy();
+  const Web3Hub = await hre.ethers.getContractFactory("Web3Hub");
+  const web3hub = await Web3Hub.deploy();
 
-  await ourtube.deployed();
+  await web3hub.waitForDeployment();
 
-  console.log("Ourtube deployed to:", ourtube.address);
+  console.log("Web3Hub deployed to:", web3hub.target);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

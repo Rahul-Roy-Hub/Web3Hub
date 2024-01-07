@@ -1,16 +1,15 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-// Importing Console.sol from the hardhat console library
-import "hardhat/console.sol";
-
-contract Ourtube {
-    // State variable
+contract Web3Hub {
+    // Declaring the videoCount 0 by default
     uint256 public videoCount = 0;
-    // Contract owner
-    string public name = "Ourtube Contract";
+    // Name of your contract
+    string public name = "Web3Hub";
+    // Creating a mapping of videoCount to Video
     mapping(uint256 => Video) public videos;
 
+    //  Create a struct called 'Video' with the following properties:
     struct Video {
         uint256 id;
         string hash;
@@ -19,11 +18,11 @@ contract Ourtube {
         string location;
         string category;
         string thumbnailHash;
-        bool isAudio;
         string date;
         address author;
     }
 
+    // Create a 'VideoUploaded' event that emits the properties of the video
     event VideoUploaded(
         uint256 id,
         string hash,
@@ -32,15 +31,13 @@ contract Ourtube {
         string location,
         string category,
         string thumbnailHash,
-        bool isAudio,
         string date,
         address author
     );
 
-    constructor() {
-        console.log("Deploying OutTube");
-    }
+    constructor() {}
 
+    // Function to upload a video
     function uploadVideo(
         string memory _videoHash,
         string memory _title,
@@ -48,15 +45,16 @@ contract Ourtube {
         string memory _location,
         string memory _category,
         string memory _thumbnailHash,
-        bool _isAudio,
         string memory _date
     ) public {
-        // Validating
+        // Validating the video hash, title and author's address
         require(bytes(_videoHash).length > 0);
         require(bytes(_title).length > 0);
         require(msg.sender != address(0));
 
+        // Incrementing the video count
         videoCount++;
+        // Adding the video to the contract
         videos[videoCount] = Video(
             videoCount,
             _videoHash,
@@ -65,10 +63,10 @@ contract Ourtube {
             _location,
             _category,
             _thumbnailHash,
-            _isAudio,
             _date,
             msg.sender
         );
+        // Triggering the event
         emit VideoUploaded(
             videoCount,
             _videoHash,
@@ -77,7 +75,6 @@ contract Ourtube {
             _location,
             _category,
             _thumbnailHash,
-            _isAudio,
             _date,
             msg.sender
         );

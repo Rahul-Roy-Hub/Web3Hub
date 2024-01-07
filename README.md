@@ -2,23 +2,16 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/suhailkakar/Decentralized-YouTube">
-    <img src="https://raw.githubusercontent.com/suhailkakar/Decentralized-YouTube/version-1/logo.png" alt="Logo" width="110" height="80">
-  </a>
+<h2 align="center">Web3Hub — It is YouTube but decentralized</h2>
 
-<h3 align="center">OurTube — It is YouTube but decentralized</h3>
-
-</div>
+</div>   
 
 ## About The Project
 
-[![Ourtube][product-screenshot]](https://twitter.com/suhailkakar)
+[![Web3Hub][product-screenshot1]](https://twitter.com/rahuldevrio)
+[![Web3Hub][product-screenshot2]](https://twitter.com/rahuldevrio)
 
-OurTube is a YouTube Clone built on top of Polygon network and The Graph, that allows users to create, share and watch videos, without worrying about their privacy.
-
-Here is a complete tutorial on how to build a similar project: https://blog.suhailkakar.com/building-a-full-stack-web3-youtube-clone-with-next-ipfs-the-graph-solidity-and-livepeer
-
-> This is the version 2.0 of this applications, you can find the first verion [here](https://github.com/suhailkakar/Decentralized-YouTube/tree/version-1)
+Web3Hub is a YouTube Clone built on top of Polygon network and The Graph, that allows users to create, share and watch videos, without worrying about their privacy.
 
 ### Built With
 
@@ -47,7 +40,7 @@ You need to have Node.js, NPM and hardhat installed on your computer, before run
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/suhailkakar/Decentralized-YouTube
+   git clone https://github.com/Rahul-Roy-Hub/Web3Hub.git
    ```
 2. Install NPM packages
 
@@ -102,4 +95,6 @@ Don't forget to give the project a star! Thanks again!
 
 This project is an open source software licensed under the MIT License
 
-[product-screenshot]: https://radicle.community/uploads/default/original/2X/1/1275b4e842a315e9211c8905c16a34116493c301.jpeg
+[product-screenshot1]: ./public/assets/Web3HubLanding.png
+
+[product-screenshot2]: ./public/assets/Web3HubHome.png

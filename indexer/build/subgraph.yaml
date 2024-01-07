@@ -1,23 +1,24 @@
-specVersion: 0.0.4
+specVersion: 0.0.5
 schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum
-    name: Ourtube
+    name: Web3Hub
     network: mumbai
     source:
-      address: "0xEd2e212B8191827cd27DcB60A09BA5F789eD78e2"
-      abi: Ourtube
+      address: "0xC303FBC78678B7D159E5ce3C24ed0308F12e402d"
+      abi: Web3Hub
+      startBlock: 44350769
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.6
+      apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
         - VideoUploaded
       abis:
-        - name: Ourtube
-          file: Ourtube/abis/Ourtube.json
+        - name: Web3Hub
+          file: Web3Hub\abis\Web3Hub.json
       eventHandlers:
-        - event: VideoUploaded(uint256,string,string,string,string,string,string,bool,string,address)
+        - event: VideoUploaded(uint256,string,string,string,string,string,string,string,address)
           handler: handleVideoUploaded
-      file: Ourtube/Ourtube.wasm
+      file: Web3Hub\Web3Hub.wasm
