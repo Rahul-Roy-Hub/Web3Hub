@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
+    "@graphprotocol/graph-ts": "^0.32.0",
     "@livepeer/react": "^0.4.0",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
